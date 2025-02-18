@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Redis TTL Test</title>
+    <script>
+        async function redis_insert() {
+            let userData = {
+                id: prompt("id입력>> 6부터"),
+                name: 'park',
+                age: 30
+            };
+
+            try {
+                let response = await fetch("/redis/save", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to insert user.");
+                }
+
+                let result = await response.json();
+                alert("User Inserted with TTL: " + JSON.stringify(result));
+
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Failed to insert user.");
+            }
+        }
+
+        async function redis_get() {
+            let userId = prompt("Enter User ID to fetch:", "3");
+
+            try {
+                let response = await fetch(`/redis/${userId}`, {
+                    method: "GET"
+                });
+
+                if (!response.ok) {
+                    throw new Error("User not found or expired.");
+                }
+
+                let result = await response.json();
+                alert("User Data: " + JSON.stringify(result));
+
+            } catch (error) {
+                console.error("Error:", error);
+                alert("User not found or expired.");
+            }
+        }
+    </script>
+</head>
+<body>
+<h2>Redis TTL Test</h2>
+<button onclick="redis_insert()">Insert User into Redis with TTL</button>
+<button onclick="redis_get()">Get User from Redis</button>
+<br><br>
+<a href="/redis/3">Get User with ID 3</a>
+</body>
+</html>
