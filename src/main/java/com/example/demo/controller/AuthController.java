@@ -33,9 +33,56 @@ public class AuthController {
 
         String username = user.getUsername();
         String password = user.getPassword();
-        Authentication authentication;
+        /// ////////////
+        /// 인증하고 token발급 call
+        /// ////////////
+        Map<String, String> mapResult = getToken(response, username, password);
+        return mapResult;
+    }
 
+    /**
+     * ✅ 로그아웃 API (JWT 삭제)
+     */
+    @PostMapping("/logout3")
+    public Map<String, String> logout(HttpServletResponse response) {
+        // ✅ 쿠키에서 JWT 제거
+/// /////////////////////////////// 실습 부분 //////////////////////////////////////////////
+        Cookie cookie = new Cookie("accessToken", "");
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true);
+        cookie.setPath("/");
+        cookie.setMaxAge(0); // 즉시 만료
+        response.addCookie(cookie);
+/// /////////////////////////////// 실습 부분 //////////////////////////////////////////////
+
+        return Map.of("message", "로그아웃 성공!");
+    }
+
+    /**
+     * ✅ 로그인한 사용자 정보 조회 API (SecurityContext에서 가져오기)
+     */
+    @GetMapping("/user-info3")
+    @ResponseBody
+    public Map<String, String> getUserInfo(Authentication authentication) {
+
+        // ✅ SecurityContextHolder에서 사용자 정보 가져오기
+/// /////////////////////////////// 실습 부분 //////////////////////////////////////////////
+        if (authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            String role = authentication.getAuthorities().iterator().next().getAuthority();
+
+            System.out.println("✅ SecurityContext에서 가져온 사용자: " + username + " | 역할: " + role);
+            return Map.of("username", username, "role", role);
+        }
+/// /////////////////////////////// 실습 부분 //////////////////////////////////////////////
+        // ✅ 인증되지 않은 경우
+        return Map.of("error", "로그인 정보 없음");
+    }
+
+
+    public Map<String, String> getToken(HttpServletResponse response, String username, String password) {
         // 인증 시도
+        Authentication authentication;
         try {
             authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(username, password));
@@ -83,42 +130,23 @@ public class AuthController {
         return Map.of("message", "성공", "token", token);
     }
 
-    /**
-     * ✅ 로그아웃 API (JWT 삭제)
-     */
-    @PostMapping("/logout3")
-    public Map<String, String> logout(HttpServletResponse response) {
-        // ✅ 쿠키에서 JWT 제거
+    public Map<String, String> getToken2(HttpServletResponse response, String username, String role) {
+
+        // ✅ JWT 토큰 생성
+        String token = jwtUtil.generateToken(username, role);
+
+        // ✅ HTTPOnly, Secure 쿠키에 JWT 저장
 /// /////////////////////////////// 실습 부분 //////////////////////////////////////////////
-        Cookie cookie = new Cookie("accessToken", "");
+        Cookie cookie = new Cookie("accessToken", token);
         cookie.setHttpOnly(true);
-        cookie.setSecure(true);
+        cookie.setSecure(true); // HTTPS 환경에서만 전송
         cookie.setPath("/");
-        cookie.setMaxAge(0); // 즉시 만료
+        cookie.setMaxAge(86400); // 1일 (초 단위)
         response.addCookie(cookie);
 /// /////////////////////////////// 실습 부분 //////////////////////////////////////////////
 
-        return Map.of("message", "로그아웃 성공!");
+        System.out.println("✅ 발급된 JWT: " + token);
+        return Map.of("message", "성공", "token", token);
     }
 
-    /**
-     * ✅ 로그인한 사용자 정보 조회 API (SecurityContext에서 가져오기)
-     */
-    @GetMapping("/user-info3")
-    @ResponseBody
-    public Map<String, String> getUserInfo(Authentication authentication) {
-
-        // ✅ SecurityContextHolder에서 사용자 정보 가져오기
-/// /////////////////////////////// 실습 부분 //////////////////////////////////////////////
-        if (authentication != null && authentication.isAuthenticated()) {
-            String username = authentication.getName();
-            String role = authentication.getAuthorities().iterator().next().getAuthority();
-
-            System.out.println("✅ SecurityContext에서 가져온 사용자: " + username + " | 역할: " + role);
-            return Map.of("username", username, "role", role);
-        }
-/// /////////////////////////////// 실습 부분 //////////////////////////////////////////////
-        // ✅ 인증되지 않은 경우
-        return Map.of("error", "로그인 정보 없음");
-    }
 }

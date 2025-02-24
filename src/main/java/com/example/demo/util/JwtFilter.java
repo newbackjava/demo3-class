@@ -58,7 +58,6 @@ public class JwtFilter extends OncePerRequestFilter {
                     // ✅ Authentication 객체 생성 후 SecurityContextHolder에 저장
                     UsernamePasswordAuthenticationToken authToken =
                             new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-
                     SecurityContextHolder.getContext().setAuthentication(authToken);
                 }
             }

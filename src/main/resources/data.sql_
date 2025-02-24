@@ -216,3 +216,6 @@ VALUES
     ('Title 99', 'Content of the post 99', 'testUser'),
     ('Title 100', 'Content of the post 100', 'testUser');
 
+
+INSERT INTO users (username, role, password) VALUES ('user', 'ROLE_USER', '$2a$10$wUyf.Kggk2zM20OniAB1Xeafk4gHnA716X48R9swSTNwm6n6POxJq');
+INSERT INTO users (username, role, password) VALUES ('admin', 'ROLE_ADMIN', '$2a$10$Cz7At/9uaFiMFumsQzv8I.EyxCnkuWBPzt7gKqypVV2I.WE/o9Smy');
