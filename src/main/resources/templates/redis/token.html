@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Redis TTL Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        async function redis_insert() {
+            let token = {
+                id: prompt("id입력>> 6부터"),
+                refreshToken: "refreshToken",
+            };
+
+            try {
+                let response = await axios.post("/token/save", token);
+
+                if (response.data) {
+                    alert("token Redis에 저장함. " + JSON.stringify(response.data));
+                } else {
+                    alert("RefreshToken 저장 실패");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Failed to insert token.");
+            }
+        }
+
+        async function redis_get() {
+            let id = prompt("Enter User ID to fetch:", "3"); //accessToken
+
+            try {
+                let response = await axios.get(`/token/${id}`);
+
+                if (response.data) {
+                    alert("Refresh토큰 유효하여 AccessToken재발급 가능>>> " + JSON.stringify(response.data));
+                } else {
+                    alert("RefreshToken 유효하지 않아 재로그인해야함.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("RefreshToken 유효하지 않아 재로그인해야함.");
+            }
+        }
+    </script>
+</head>
+<body>
+<h2>Redis TTL Test</h2>
+<button onclick="redis_insert()">Insert User into Redis with TTL(20s)</button>
+<button onclick="redis_get()">Get User from Redis</button>
+<br><br>
+<a href="/token/1">Get User with AccessToken ID 1</a>
+</body>
+</html>
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <title>Redis TTL Test</title>-->
+<!--    <script>-->
+<!--        async function redis_insert() {-->
+<!--            let token = {-->
+<!--                id: prompt("id입력>> 6부터"),-->
+<!--                refreshToken: "refreshToken",-->
+<!--            };-->
+
+<!--            try {-->
+<!--                let response = await fetch("/token/save", {-->
+<!--                    method: "POST",-->
+<!--                    headers: {-->
+<!--                        "Content-Type": "application/json"-->
+<!--                    },-->
+<!--                    body: JSON.stringify(token)-->
+<!--                });-->
+
+<!--                if (!response.ok) {-->
+<!--                    throw new Error("Failed to insert user.");-->
+<!--                }-->
+
+<!--                let result = await response.json();-->
+<!--                if (result) {-->
+<!--                    alert("token Redis에 저장함. " + JSON.stringify(result));-->
+<!--                }else{-->
+<!--                    alert("RefreshToken 저장 실패");-->
+<!--                }-->
+
+<!--            } catch (error) {-->
+<!--                console.error("Error:", error);-->
+<!--                alert("Failed to insert token.");-->
+<!--            }-->
+<!--        }-->
+
+<!--        async function redis_get() {-->
+<!--            let id = prompt("Enter User ID to fetch:", "3"); //accessToken-->
+
+<!--            try {-->
+<!--                let response = await fetch(`/token/${id}`, {-->
+<!--                    method: "GET"-->
+<!--                });-->
+
+<!--                if (!response.ok) {-->
+<!--                    throw new Error("User not found or expired.");-->
+<!--                }-->
+
+<!--                let result = await response.json();-->
+<!--                if (result) {-->
+<!--                    alert("Refresh토큰 유효하여 AccessToken재발급 가능>>> " + JSON.stringify(result));-->
+<!--                }else{-->
+<!--                    alert("RefreshToken 유효하지 않아 재로그인해야함.");-->
+<!--                }-->
+
+<!--            } catch (error) {-->
+<!--                console.error("Error:", error);-->
+<!--                alert("RefreshToken 유효하지 않아 재로그인해야함.");-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h2>Redis TTL Test</h2>-->
+<!--<button onclick="redis_insert()">Insert User into Redis with TTL(20s)</button>-->
+<!--<button onclick="redis_get()">Get User from Redis</button>-->
+<!--<br><br>-->
+<!--<a href="/toekn/1">Get User with AccessToken ID 1</a>-->
+<!--</body>-->
+<!--</html>-->
