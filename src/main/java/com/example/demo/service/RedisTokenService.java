@@ -1,7 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.RedisToken;
+import com.example.demo.entity.RedisUser;
 import com.example.demo.repository.redis.RedisTokenRepository;
+import com.example.demo.repository.redis.RedisUserRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

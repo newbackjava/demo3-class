@@ -8,14 +8,14 @@ let csrfToken = "";
 // 이 쿠키는 withCredentials 옵션과는 관계없이, <a> 태그나 서버로의 기본적인 HTTP 요청에서 자동으로 전송됨.
 
 const api = axios.create({
-    baseURL: "http://localhost:8888/auth",
-    withCredentials: true, // HTTPOnly 쿠키 포함 (자동으로 전송됨)
-    // GET /some-endpoint HTTP/1.1
-    // Host: example.com
-    // Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhdXRob3IiLCJleHBpcmVkX3VzZXIiOiJ1c2VyX2F1dGgiLCJpYXQiOjE2Mjg4NDEwMzF9.GZsM...
-    headers: {
-        "Content-Type": "application/json"
-    }
+    /// /////////////////////////////// 실습 부분 //////////////////////////////////////////////
+
+
+
+
+
+
+    /// /////////////////////////////// 실습 부분 //////////////////////////////////////////////
 });
 
 ////////////////////////////////////////////////

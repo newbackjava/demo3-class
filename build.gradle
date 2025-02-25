@@ -165,6 +165,26 @@ dependencies {
     //************************************************************************
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
+    //************************************************************************
+    //  Redis
+    //************************************************************************
+    // Spring Boot Starter Data Redis (includes spring-data-redis and Lettuce client)
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // Spring Boot Starter Cache
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+//    // 직렬화 관련
+//    api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.1"
+//    api 'com.fasterxml.jackson.core:jackson-databind:2.13.1'
+//
+//    //ReadFrom
+//    implementation 'io.lettuce:lettuce-core:6.2.6.RELEASE'
+//
+//    // @ConfigurationProperties
+//    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:3.1.2"
+
+    // aop 관련
+    implementation 'org.springframework.boot:spring-boot-starter-aop:2.3.1.RELEASE'
 
     //************************************************************************
     //  Redis
@@ -196,6 +216,12 @@ dependencies {
     // lombok을 이용해 Junit 테스트를 진행하는 경우 추가
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
+
+    // redis
+    // Test dependencies (최신 Testcontainers 버전으로 변경)
+//    testImplementation 'org.testcontainers:testcontainers:1.19.2'
+//    testImplementation 'org.testcontainers:junit-jupiter:1.19.2'
+//    testImplementation 'org.testcontainers:redis:1.19.2'
 }
 
 

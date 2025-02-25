@@ -1,6 +1,11 @@
 spring:
   application:
     name: demo3
+  cache:
+    type: redis  # Redis 캐시 사용
+    redis:
+      time-to-live: 20000  # 20시간 (밀리초 기준)
+
 
   # http post char setting #######################################################
   web:
@@ -8,16 +13,30 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
+
   # file upload #######################################################
     resources:
       cache:
         cachecontrol:
           no-store: true
-      add-mappings: true # #################전역 에러 설정
-      # 정적 리소스(/static, /public 등) 매핑 비활성화
+      add-mappings: true # #동적으로 생기는 업로드한 파일 바로 인식
+      # 정적 리소스(/static, /public 등) 매핑 비활성화, 기본 static파일은  readOnly성격을 가지고 있음.
   mvc:
     throw-exception-if-no-handler-found: true # #################전역 에러 설정
     # 존재하지 않는 URL 요청 시 404 Not Found 예외 발생
+
+    # redis #####################################################
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: ""  # 기본적으로 Redis에 비밀번호가 없으면 빈 문자열 유지
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 20
+          max-idle: 5
+          min-idle: 2
 
 
     # kafka #######################################################
