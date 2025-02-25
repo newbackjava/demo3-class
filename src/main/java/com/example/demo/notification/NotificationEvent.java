@@ -32,3 +32,4 @@ public class NotificationEvent extends ApplicationEvent {
         return message;
     }
 }
+
