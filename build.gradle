@@ -187,11 +187,19 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-aop:2.3.1.RELEASE'
 
     //************************************************************************
+    //  Redis
+    //************************************************************************
+    // Spring Boot Starter Data Redis (includes spring-data-redis and Lettuce client)
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // Spring Boot Starter Cache
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+
+    //************************************************************************
     //  elasticsearch
     //************************************************************************
     //implementation 'org.springframework.data:spring-data-elasticsearch'
     //implementation 'co.elastic.clients:elasticsearch-java:8.11.0' // 최신 버전 확인 필요
-
 
     ////////////////////////////////////////////////////////////////////////////
     //************************************************************************

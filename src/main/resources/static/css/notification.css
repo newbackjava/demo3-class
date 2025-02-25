@@ -1,0 +1,35 @@
+/* style.css */
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed; /* 스크롤해도 같은 위치에 있음 */
+    z-index: 1; /* 나머지 내용 위에 표시 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 전체 너비 */
+    height: 100%; /* 전체 높이 */
+    overflow: auto; /* 모달 컨텐츠가 화면보다 크면 스크롤바 표시 */
+    background-color: rgb(0,0,0); /* 폴백 색상 */
+    background-color: rgba(0,0,0,0.4); /* 어둡게 */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 페이지 중앙에 위치 */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* 대부분의 화면 차지 */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
