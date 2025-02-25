@@ -22,6 +22,7 @@ public class NotificationEvent extends ApplicationEvent {
         this.message = message;  // 이벤트 메시지를 초기화
     }
 
+
     /**
      * 이벤트의 메시지를 반환하는 메소드.
      *
