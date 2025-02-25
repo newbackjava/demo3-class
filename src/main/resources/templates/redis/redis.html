@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Redis Test</title>
+    <script>
+        async function redis_insert() {
+            // 사용자 입력 받기
+
+            let userData = {
+                id: '3',
+                name: 'park',
+                age: 30 // 숫자로 변환
+            };
+
+            // Fetch API를 사용하여 POST 요청 보내기
+            try {
+                let response = await fetch("/redis/save", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to insert user.");
+                }
+
+                let result = await response.json();
+                alert("User Inserted: " + JSON.stringify(result));
+
+            } catch (error) {
+                console.error("Error:", error);
+
+                alert("Failed to insert user.");
+            }
+        }
+    </script>
+</head>
+<body>
+<h2>Redis Test</h2>
+<button onclick="redis_insert()">Insert User into Redis</button>
+<br><br>
+<a href="/redis/2">Get User with ID 1</a>
+</body>
+</html>

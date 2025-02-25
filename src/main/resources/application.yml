@@ -157,3 +157,8 @@ server:
 # file upload #######################################################
 upload:
   path: "C:/new_java/demo3 - JPA/src/main/resources/static/upload"
+
+# push
+notification:
+  push:
+    enabled: true

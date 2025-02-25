@@ -9,10 +9,12 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 @EnableJpaAuditing
 @EnableAspectJAutoProxy  // AspectJ AOP 활성화
+@EnableAsync
 @EntityScan(basePackages =
                 {"com.example.demo.entity"})
 public class Demo3Application implements CommandLineRunner {
