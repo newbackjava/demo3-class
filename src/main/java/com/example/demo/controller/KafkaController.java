@@ -43,7 +43,7 @@ public class KafkaController {
 
 
             /// ////////////////////////////////////////////////////////////
-            kafkaTemplate.send("test-topic", message);
+            kafkaTemplate.send("order2-topic", message);
             /// ////////////////////////////////////////////////////////////
             long endTime = System.currentTimeMillis();
 

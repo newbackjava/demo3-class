@@ -25,7 +25,7 @@ spring:
     throw-exception-if-no-handler-found: true # #################전역 에러 설정
     # 존재하지 않는 URL 요청 시 404 Not Found 예외 발생
 
-    # redis #####################################################
+# redis #####################################################
   data:
     redis:
       host: localhost
@@ -39,7 +39,7 @@ spring:
           min-idle: 2
 
 
-    # kafka #######################################################
+  # kafka #######################################################
     kafka:
       bootstrap-servers: localhost:9092 # Kafka 브로커 주소
       producer:
@@ -120,7 +120,7 @@ logging:
     root: INFO
     com.example.demo: INFO
     org.springframework.web: INFO
-    org.springframework.security : DEBUG
+    org.springframework.security : INFO
     org.thymeleaf: INFO
     org.springframework.boot.web.servlet: INFO
     org.hibernate.SQL: DEBUG  # SQL 실행 로그
@@ -128,8 +128,8 @@ logging:
     # 쿼리와 함께 파라미터 값을 출력
     org.hibernate.stat: INFO  # Hibernate 통계 관련 로그
     # Hibernate가 제공하는 통계 정보를 출력
-    org.springframework.kafka: ERROR
-    org.apache.kafka: ERROR
+    org.springframework.kafka: DEBUG
+    org.apache.kafka: DEBUG
   file:
     name: logs/app.log
     path: logs

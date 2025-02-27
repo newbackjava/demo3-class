@@ -14,12 +14,14 @@ public class OrderConsumerService {
     private long kafka_time = 0;
     private long kafka_count = 0;
 
-    @KafkaListener(topics = "test-topic", groupId = "order-group")
+    @KafkaListener(topics = "order2-topic", groupId = "order2-group")
     public void processOrder(String message) {
         long startTime = System.currentTimeMillis();
         kafka_count++;
 
+        System.out.println("kafka에서 받음.==================================");
         System.out.println("Received order: " + message);
+        System.out.println("=================================================");
 
         // 예: "itemName: Laptop, quantity: 2"
         String[] parts = message.split(", ");

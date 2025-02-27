@@ -18,8 +18,8 @@ public class OrderProducerService {
     //}
 
     public void sendOrder(String orderDetails) {
-        kafkaTemplate.send("test-topic", orderDetails);
-        System.out.println("Order sent to Kafka: " + orderDetails);
+        kafkaTemplate.send("order2-topic", orderDetails);
+        System.out.println("@@@@@@@@@@@@@@ Order sent to Kafka: " + orderDetails);
     }
 }
 
