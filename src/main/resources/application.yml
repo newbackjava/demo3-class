@@ -128,8 +128,10 @@ logging:
     # 쿼리와 함께 파라미터 값을 출력
     org.hibernate.stat: INFO  # Hibernate 통계 관련 로그
     # Hibernate가 제공하는 통계 정보를 출력
-    org.springframework.kafka: DEBUG
-    org.apache.kafka: DEBUG
+    # kafka실습시에는 DEBUG모드로 해야함.
+    org.springframework.kafka: INFO
+    org.apache.kafka: INFO
+    # kafka실습 후에는 INFO모드로 설정해야 편함.
   file:
     name: logs/app.log
     path: logs

@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.entity.Orders;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,11 +27,20 @@ public class RedisConfig {
         return new LettuceConnectionFactory("localhost", 6379); // Redis 호스트 & 포트 설정
     }
 
+//    @Bean
+//    public RedisTemplate<String, Orders> redisTemplate(RedisConnectionFactory connectionFactory) {
+//        RedisTemplate<String, Orders> template2 = new RedisTemplate<>();
+//        template2.setConnectionFactory(connectionFactory);
+//        System.out.println("REDISTemplate 빈 생성됨....%%%%%%%%%%%%%%%%%%%%");
+//        return template2;
+//    }
+
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
-        RedisTemplate<String, Object> template = new RedisTemplate<>();
-        template.setConnectionFactory(connectionFactory);
-        return template;
+        RedisTemplate<String, Object> template2 = new RedisTemplate<>();
+        template2.setConnectionFactory(connectionFactory);
+        System.out.println("REDISTemplate 빈 생성됨....%%%%%%%%%%%%%%%%%%%%");
+        return template2;
     }
 
     @Bean
