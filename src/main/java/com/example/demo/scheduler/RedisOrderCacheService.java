@@ -17,8 +17,8 @@ public class RedisOrderCacheService {
     private final MySqlOrderRepository orderRepository; // MySQL에서 주문 데이터를 가져오는 Repository
     private final RedisOrderRepository redisOrderRepository; // Redis에 주문 데이터를 저장하는 Repository
 
-    //@Scheduled(cron = "0 0 0 * * SUN")  // 매주 일요일 자정에 실행
-    @Scheduled(cron = "0 0/1 * * * ?") // 1분마다 실행되는 스케줄러
+    @Scheduled(cron = "0 0 0 * * SUN")  // 매주 일요일 자정에 실행
+    //@Scheduled(cron = "0 0/1 * * * ?") // 1분마다 실행되는 스케줄러
     public void updateOrderCache() {
         System.out.println("======= Scheduled 시작!!  ========");
 
