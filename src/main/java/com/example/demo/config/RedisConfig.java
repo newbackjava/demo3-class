@@ -19,7 +19,7 @@ import java.util.Map;
 
 @Configuration
 @EnableRedisRepositories(basePackages = "com.example.demo.repository.redis")  // Redis Repository 활성화
-//@EnableCaching
+@EnableCaching
 public class RedisConfig {
 
     @Bean

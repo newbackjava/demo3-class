@@ -53,7 +53,8 @@ public class RedisOrderCacheService {
         return new Orders2(
                 order.getId(),
                 order.getItemName(),
-                order.getQuantity()
+                order.getQuantity(),
+                null // TTL은 엔티티 기본값(1시간)으로 자동 설정됨
         );
     }
 }
