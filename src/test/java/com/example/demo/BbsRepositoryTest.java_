@@ -5,12 +5,9 @@ import com.example.demo.entity.Bbs;
 import com.example.demo.entity.Member;
 import com.example.demo.repository.BbsRepository;
 import com.example.demo.repository.MemberRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 //@Transactional (넣으면 cud작업이 취소됨)
 //@DataJpaTest //Transactional을 포함하고 있음.
-public class BbsRepositoryTest {
+public class BbsRepositoryTest_ {
 // TDD(Test-Driven Development) 방식으로 BbsRepository의 findBbsWithMemberFetch() 메서드를 테스트하는 JUnit 코드입니다.
 //
 //TDD의 기본 흐름:

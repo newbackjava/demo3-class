@@ -16,7 +16,6 @@ import java.util.concurrent.TimeUnit;
 
 @Data
 @RedisHash("orders") // Redis의 Key 값
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Orders2 implements Serializable{
@@ -27,5 +26,5 @@ public class Orders2 implements Serializable{
     private int quantity;
 
     @TimeToLive
-    private Long ttl = TimeUnit.HOURS.toSeconds(10); // TTL 설정 (10초)
+    private Long ttl = 10L; // TTL 설정 (10초)
 }

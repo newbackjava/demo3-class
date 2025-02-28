@@ -8,10 +8,10 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
-@Data //get/set, toString코드 자동 생성
+//@Data //get/set, toString코드 자동 생성
 @NoArgsConstructor //기본 생성자 자동 생성
 @AllArgsConstructor //모든 멤버변수 생성자 자동 생성
-@Builder
+//@Builder
 @Entity
 public class Product {
     @Id
@@ -27,7 +27,6 @@ public class Product {
     @NotBlank(message = "Company cannot be blank") // 비어 있을 수 없음
     private String company;
 
-    @NonNull
     @Min(value = 1, message = "Price must be at least 1") // 최소값 설정
     private int price;
 }
