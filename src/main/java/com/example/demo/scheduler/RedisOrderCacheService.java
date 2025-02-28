@@ -33,15 +33,18 @@ public class RedisOrderCacheService {
                 .collect(Collectors.toList());
 
         // 기존 Redis 캐시 삭제
-        // redisOrderRepository.deleteAll();
+        //redis`OrderRepository.deleteAll();
+        System.out.println("기존 모든 Redis캐시 삭제됨.!!");
 
+        System.out.println("=======  Redis에 넣을 데이터 ========");
+        System.out.println(validOrders);
         // 새로운 주문 데이터 Redis에 저장
         redisOrderRepository.saveAll(validOrders);
 
-        System.out.println("기존 캐시 삭제 후 새 데이터 삽입함.");
+        System.out.println("Redis 기존 캐시 삭제 후 새 데이터 삽입함.");
 
         // Redis에 저장된 데이터 개수 확인
-        System.out.println("======= 재검색함 ========");
+        System.out.println("======= Redis에서 재검색함 ========");
         System.out.println(redisOrderRepository.count());
         redisOrderRepository.findAll().forEach(redisOrder -> {
             System.out.println("-----> " + redisOrder);
@@ -54,7 +57,9 @@ public class RedisOrderCacheService {
                 order.getId(),
                 order.getItemName(),
                 order.getQuantity(),
-                null // TTL은 엔티티 기본값(1시간)으로 자동 설정됨
+                10L
         );
     }
 }
+// TTL은 엔티티 기본값(1시간)으로 자동 설정됨
+

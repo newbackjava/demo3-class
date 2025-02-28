@@ -3,11 +3,11 @@ package com.example.demo.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.TimeToLive;
 
@@ -21,10 +21,11 @@ import java.util.concurrent.TimeUnit;
 @AllArgsConstructor
 public class Orders2 implements Serializable{
 
+    @Id
     private Long id;
     private String itemName;
     private int quantity;
 
     @TimeToLive
-    private Long ttl = TimeUnit.HOURS.toSeconds(1); // TTL 설정 (1시간)
+    private Long ttl = TimeUnit.HOURS.toSeconds(10); // TTL 설정 (10초)
 }
