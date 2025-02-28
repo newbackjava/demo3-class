@@ -1,1 +1,1 @@
-## bs5기반 타임리프 레이아웃
+## SpringBoot3 + Kafka + Redis
