@@ -33,7 +33,7 @@ public class RedisOrderCacheService {
                 .collect(Collectors.toList());
 
         // 기존 Redis 캐시 삭제
-        //redis`OrderRepository.deleteAll();
+        // redis`OrderRepository.deleteAll();
         System.out.println("기존 모든 Redis캐시 삭제됨.!!");
 
         System.out.println("=======  Redis에 넣을 데이터 ========");
@@ -61,5 +61,3 @@ public class RedisOrderCacheService {
         );
     }
 }
-// TTL은 엔티티 기본값(1시간)으로 자동 설정됨
-
