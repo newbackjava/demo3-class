@@ -12,10 +12,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-import org.springframework.web.cors.CorsConfiguration;
-
-import java.util.List;
 
 @Configuration
 @RequiredArgsConstructor
@@ -44,7 +40,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                                 //루트는 모두 허용
                                 .requestMatchers("/", "/login", "/logout", "/css/**", "/js/**", "/images/**", "/assets/**").permitAll()
-                                .requestMatchers("/", "/callback.html", "/login2", "/naver/login", "/naver/**", "/auth/**", "/css/**", "/js/**", "/images/**", "/assets/**").permitAll()
+                                .requestMatchers("/s3", "/callback.html", "/login2", "/naver/login", "/naver/**", "/auth/**", "/css/**", "/js/**", "/images/**", "/assets/**").permitAll()
                                 // 정적 리소스 접근 허용, 싱글톤빈으로 static주소(resources아래 폴더) 접근 제어 가능
                                 .requestMatchers("/admin/**", "/chat/chat").hasRole("ADMIN") //admin, chat/chat 주소 접근은 ADMIN role만 접근 가능
                                 .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN") //user 주소 접근은 ADMIN/USER role중 어떤 것이든 접근 가능

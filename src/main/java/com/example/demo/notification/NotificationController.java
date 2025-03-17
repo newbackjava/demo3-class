@@ -26,7 +26,7 @@ public class NotificationController {
      */
     @GetMapping
     public String home() {
-        // 반환하는 문자열은 'resources/templates/notification/notification.html'에 해당하는 Thymeleaf 뷰입니다.
+        // 반환하는 문자열은 'resources/templates/notification/notification.s3.html'에 해당하는 Thymeleaf 뷰입니다.
         return "notification/notification";
     }
 

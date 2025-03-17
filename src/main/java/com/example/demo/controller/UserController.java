@@ -22,16 +22,16 @@ public class UserController {
         return "Welcome, Admin!";
     }
 
-    //login.html 에서의 post요청은 spring security에서 자동 처리함.
+    //login.s3.html 에서의 post요청은 spring security에서 자동 처리함.
     @GetMapping("/login")
     public String login() {
-        return "user/login"; // login.html 템플릿을 반환
+        return "user/login"; // login.s3.html 템플릿을 반환
     }
 
-    //login.html 에서의 post요청은 spring security에서 자동 처리함.
+    //login.s3.html 에서의 post요청은 spring security에서 자동 처리함.
     @GetMapping("/login2")
     public String login2() {
-        return "user/login2"; // login.html 템플릿을 반환
+        return "user/login2"; // login.s3.html 템플릿을 반환
     }
 
     @GetMapping("/user-info")

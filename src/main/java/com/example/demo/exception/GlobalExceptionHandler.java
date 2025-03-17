@@ -3,13 +3,12 @@ package com.example.demo.exception;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.boot.web.servlet.error.ErrorController;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.http.HttpStatus;
 
 //@ControllerAdvice //--->     // 기본 예외 처리인 경우(모두 error.html로 처리하고자 하는 경우)
-@Controller
+//@Controller
 public class GlobalExceptionHandler implements ErrorController {
 
     // 기본 예외 처리
@@ -50,10 +49,10 @@ public class GlobalExceptionHandler implements ErrorController {
             }
 
             // 500 에러 페이지 (기타 서버 에러)
-            if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                model.addAttribute("error", "서버 내부 오류가 발생했습니다.");
-                result = "error/error"; // error/500.html
-            }
+//            if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+//                model.addAttribute("error", "서버 내부 오류가 발생했습니다.");
+//                result = "error/error"; // error/500.html
+//            }
         }
 
         // 기타 예외는 기본 에러 페이지로 이동

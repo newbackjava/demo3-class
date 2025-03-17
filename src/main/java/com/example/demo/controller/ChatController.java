@@ -38,7 +38,7 @@ public class ChatController {
         return chatService.saveMessage(chat);
     }
     
-    // -------------------- html call -----------------
+    // -------------------- s3.html call -----------------
     @GetMapping("chat/chat")
     public String chat() {
         return "chat/chat";
@@ -53,5 +53,5 @@ public class ChatController {
     public String chatting() {
         return "chat/chatting";
     }
-    // -------------------- html call -----------------
+    // -------------------- s3.html call -----------------
 }
