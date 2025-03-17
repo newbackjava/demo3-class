@@ -1,2 +1,3 @@
 ## SpringBoot3 + Kafka + Redis
-![KakaoTalk_Photo_2025-03-17-15-49-12](https://github.com/user-attachments/assets/6022e5d2-6f5d-4624-a445-f3c1ce20a3e6)
+
+![aeb-architecture2](https://github.com/user-attachments/assets/f1c84241-19ff-4988-acf9-effb9a988590)
